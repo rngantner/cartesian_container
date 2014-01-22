@@ -16,7 +16,7 @@ typedef unsigned int size_type;
 
 /**
  * This class is an STL-compatible implementation of the tensorization of a container
- * in `dim` dimensions. It only stores iterators to the given container and forms the
+ * in `dim` dimensions. It only stores only the given iterators (no data) and forms the
  * tensor product on-the-fly.
  */
 template<class Iterator>
