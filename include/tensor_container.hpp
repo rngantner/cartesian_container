@@ -79,6 +79,7 @@ public:
     // begin and end functions
     iterator begin(){ return iterator(m_begin, m_dim, m_n, 0); }
     iterator end(){ return iterator(m_begin, m_dim, m_n, -1); }
+    size_type size(){ return std::pow(m_n, m_dim); }
 
 private:
     Iterator m_begin, m_end;
