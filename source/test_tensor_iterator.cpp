@@ -1,3 +1,10 @@
+//
+// Copyright 2014 Robert Gantner
+//
+// Compile with e.g.
+//   clang++ -std=c++11 -I ../include/ test_tensor_iterator.cpp
+//
+
 #include <iostream>
 #include "tensor_container.hpp"
 

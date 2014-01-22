@@ -1,3 +1,7 @@
+//
+// Copyright 2014 Robert Gantner
+//
+
 #ifndef TENSOR_CONTAINER_H
 #define TENSOR_CONTAINER_H
 #pragma once
