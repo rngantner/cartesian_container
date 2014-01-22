@@ -1,13 +1,12 @@
 tensor_container
 ================
 
-C++ generic tensorization of any STL-compliant container.
-Stores only two iterators and constructs the tensorized elements on the fly.
+Generic tensorization of any STL-compliant container with itself in arbitrary dimensions with constant memory overhead. Stores only two iterators to the limits of the base container and generates the tensorized points on the fly when an iterator to the container is dereferenced.
 
 Example
 -------
 The following code shows the features of the tensor_container.
-Slightly more detail can be found in `source/test_tensor_iterator.cpp`.
+More details can be found in `source/test_tensor_iterator.cpp`.
 
     // define a container, e.g. a std::vector
     std::vector<int> my_vec = {1,2,3};
@@ -21,7 +20,7 @@ Slightly more detail can be found in `source/test_tensor_iterator.cpp`.
         std::cout << std::endl;
     }
 
-The output of this program should then be:
+The output of this program is then:
 
     1, 1, 
     1, 2, 
