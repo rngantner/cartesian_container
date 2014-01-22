@@ -1,16 +1,42 @@
 #include <iostream>
 #include "tensor_container.hpp"
 
+#include <set>
 
 int main(int argc, const char *argv[])
 {
-    int dim = 4;
-    typedef int value_type;
-    std::vector<value_type> vec = {1,2,3,4};
+    std::cout << "---------------------" << std::endl;
+    std::cout << " for std::vector" << std::endl;
+    std::cout << "---------------------" << std::endl;
 
-    tensor_container<std::vector<value_type>> cont(vec, dim);
+    int dim = 2;
+    typedef int value_type;
+    std::vector<value_type> vec = {1,2,3};
+
+    //tensor_container<std::vector<value_type>::iterator> cont(vec.begin(), vec.end(), dim);
+    auto cont = make_tensor_container(vec.begin(), vec.end(), dim);
 
     for (auto tmp : cont) {
+        std::copy(tmp.begin(), tmp.end(), std::ostream_iterator<value_type>(std::cout, ", "));
+        std::cout << std::endl;
+    }
+
+    std::vector<double> vec2;
+    for (auto v : vec)
+        vec2.push_back(v);
+
+    // std::set
+    std::cout << "---------------------" << std::endl;
+    std::cout << " now for std::set" << std::endl;
+    std::cout << "---------------------" << std::endl;
+    std::cout << " adding element 7" << std::endl;
+    std::cout << "---------------------" << std::endl;
+
+    std::set<double> myset(vec2.begin(), vec2.end());
+    myset.insert(7);
+    auto cont2 = make_tensor_container(myset.begin(), myset.end(), dim);
+
+    for (auto tmp : cont2) {
         std::copy(tmp.begin(), tmp.end(), std::ostream_iterator<value_type>(std::cout, ", "));
         std::cout << std::endl;
     }
