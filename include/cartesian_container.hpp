@@ -2,8 +2,8 @@
 // Copyright 2014 Robert Gantner
 //
 
-#ifndef TENSOR_CONTAINER_H
-#define TENSOR_CONTAINER_H
+#ifndef CARTESIAN_CONTAINER_H
+#define CARTESIAN_CONTAINER_H
 #pragma once
 
 #include <iterator>
@@ -15,14 +15,14 @@
 typedef unsigned int size_type;
 
 /**
- * This class is an STL-compatible implementation of the tensorization of a container
+ * This class is an STL-compatible implementation of the cartesian product of a container
  * in `dim` dimensions. It only stores only the given iterators (no data) and forms the
- * tensor product on-the-fly.
+ * cartesian product on-the-fly.
  */
 template<class Iterator>
-class tensor_container {
+class cartesian_container {
 public:
-    tensor_container(Iterator begin, Iterator end, size_type dim) : m_begin(begin), m_end(end), m_dim(dim) {
+    cartesian_container(Iterator begin, Iterator end, size_type dim) : m_begin(begin), m_end(end), m_dim(dim) {
         m_n = std::distance(begin, end);
     }
 
@@ -55,10 +55,10 @@ public:
         bool equal(iterator const& other) const {
             return (other.cont_it_ == cont_it_ && other.i_ == i_);
         }
-        /** Generates the tensor product. */
+        /** Generates the cartesian product. */
         std::vector<typename Iterator::value_type> dereference() const {
             if (i_<0) throw std::runtime_error("Iterator is past-the-end; cannot dereference");
-            // construct tensorization.
+            // construct cartesian product.
             // since the returned value is a new object, the reference type must be vector<value_type>
             // (see fourth template argument of iterator_facade above)
             std::vector<typename Iterator::value_type> ret(dim_);
@@ -89,11 +89,11 @@ private:
 
 /** Helper function: allows use of auto to not type template parameters. */
 template<class Iterator>
-tensor_container<Iterator> make_tensor_container(Iterator begin, Iterator end, size_t dim){
-    return tensor_container<Iterator>(begin, end, dim);
+cartesian_container<Iterator> make_cartesian_container(Iterator begin, Iterator end, size_t dim){
+    return cartesian_container<Iterator>(begin, end, dim);
 }
 
 
 
-#endif /* end of include guard: TENSOR_CONTAINER_H */
+#endif /* end of include guard: CARTESIAN_CONTAINER_H */
 

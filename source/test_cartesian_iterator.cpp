@@ -2,11 +2,11 @@
 // Copyright 2014 Robert Gantner
 //
 // Compile with e.g.
-//   clang++ -std=c++11 -I ../include/ test_tensor_iterator.cpp
+//   clang++ -std=c++11 -I ../include/ test_cartesian_iterator.cpp
 //
 
 #include <iostream>
-#include "tensor_container.hpp"
+#include "cartesian_container.hpp"
 
 #include <set>
 
@@ -20,8 +20,8 @@ int main(int argc, const char *argv[])
     typedef int value_type;
     std::vector<value_type> vec = {1,2,3};
 
-    //tensor_container<std::vector<value_type>::iterator> cont(vec.begin(), vec.end(), dim);
-    auto cont = make_tensor_container(vec.begin(), vec.end(), dim);
+    //cartesian_container<std::vector<value_type>::iterator> cont(vec.begin(), vec.end(), dim);
+    auto cont = make_cartesian_container(vec.begin(), vec.end(), dim);
 
     for (auto tmp : cont) {
         std::copy(tmp.begin(), tmp.end(), std::ostream_iterator<value_type>(std::cout, ", "));
@@ -41,7 +41,7 @@ int main(int argc, const char *argv[])
 
     std::set<double> myset(vec2.begin(), vec2.end());
     myset.insert(7);
-    auto cont2 = make_tensor_container(myset.begin(), myset.end(), dim);
+    auto cont2 = make_cartesian_container(myset.begin(), myset.end(), dim);
 
     for (auto tmp : cont2) {
         std::copy(tmp.begin(), tmp.end(), std::ostream_iterator<value_type>(std::cout, ", "));
