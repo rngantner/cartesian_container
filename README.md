@@ -1,21 +1,21 @@
-tensor_container
+cartesian_container
 ================
 
-Generic tensorization of any STL-compliant container with itself in arbitrary dimensions with constant memory overhead. Stores only two iterators to the limits of the base container and generates the tensorized points on the fly when an iterator to the container is dereferenced.
+Generic cartesian product of any STL-compliant container with itself in arbitrary dimensions with constant memory overhead. Stores only two iterators to the limits of the base container and generates the elements of the cartesian product on the fly when an iterator to the container is dereferenced.
 
 Example
--------
-The following code shows the features of the tensor_container.
-More details can be found in `source/test_tensor_iterator.cpp`.
+------
+The following code shows the features of the cartesian_container.
+More details can be found in `source/test_cartesian_iterator.cpp`.
 
     // define a container, e.g. a std::vector
     std::vector<int> my_vec = {1,2,3};
 
-    // represent its tensorization in 2 dimensions
-    auto tensor_cont = make_tensor_container(my_vec.begin(), my_vec.end(), 2);
+    // represent its cartesian in 2 dimensions
+    auto cartesian_cont = make_cartesian_container(my_vec.begin(), my_vec.end(), 2);
 
     // output all elements (which here are std::vector<int> of size 2)
-    for (auto tmp : tensor_cont) {
+    for (auto tmp : cartesian_cont) {
         std::copy(tmp.begin(), tmp.end(), std::ostream_iterator<int>(std::cout, ", "));
         std::cout << std::endl;
     }
@@ -35,4 +35,4 @@ The output of this program is then:
 
 TODO
 ----
-  - Support tensorization of different containers per dimension using variadic templates
+  - Support cartesian product of different containers per dimension using variadic templates
