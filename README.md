@@ -11,7 +11,7 @@ More details can be found in `source/test_cartesian_iterator.cpp`.
     // define a container, e.g. a std::vector
     std::vector<int> my_vec = {1,2,3};
 
-    // represent its cartesian in 2 dimensions
+    // represent its cartesian product in 2 dimensions
     auto cartesian_cont = make_cartesian_container(my_vec.begin(), my_vec.end(), 2);
 
     // output all elements (which here are std::vector<int> of size 2)
